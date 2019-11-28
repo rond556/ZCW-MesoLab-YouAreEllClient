@@ -1,5 +1,5 @@
 export default class MessageService {
-    getAllmessage() {
+    getAllMessages() {
         let request = new XMLHttpRequest();
 
         new Promise(function (resolve, reject) {
