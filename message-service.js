@@ -1,11 +1,12 @@
 export default class MessageService {
+
     getAllMessages() {
         let request = new XMLHttpRequest();
 
-        new Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             request.onload = function () {
                 if (request.status >= 200 && request.status < 300) {
-                    console.log(JSON.parse(request.responseText));
+                    const threads = JSON.parse(request.responseText);
                     resolve(threads);
                 } else {
                     reject({

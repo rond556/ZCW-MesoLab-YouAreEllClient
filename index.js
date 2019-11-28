@@ -1,7 +1,8 @@
 import MessageService from "./message-service.js";
 
 let userId = "rond556";
-const messageService = new MessageService(userId);
+const messageService = new MessageService();
+createFormListener();
 
 window.addEventListener("load", function () {
     document.getElementById("greeting").innerHTML = `Welcome ${userId}!`;
@@ -9,7 +10,7 @@ window.addEventListener("load", function () {
         .then(successCallback, errorCallback);
 
     function successCallback(response) {
-        populateMessages(response)
+        populateMessages(response);
     }
 
     function errorCallback(response) {
@@ -29,6 +30,7 @@ function createFormListener() {
     form.onsubmit = function (event) {
         // stop the regular form submission
         event.preventDefault();
+
         const data = {
             fromid: userId,
             message: form.message.value
@@ -47,7 +49,7 @@ function createFormListener() {
             console.log(response);
         }
     }
-}
+};
 
 function addMessageToThread(message) {
     const messageListItem = document.createElement("LI");
